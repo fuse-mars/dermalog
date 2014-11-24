@@ -1,5 +1,6 @@
 == README
 
+{<img src="https://travis-ci.org/nshimiye/dermalog.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/nshimiye/dermalog]
 {<img src="https://coveralls.io/repos/nshimiye/dermalog/badge.png?branch=master" alt="Coverage Status" />}[https://coveralls.io/r/nshimiye/dermalog?branch=master]
 
 (1) Install Rails (e.g. http://railsinstaller.org/en)
