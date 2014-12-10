@@ -18,17 +18,22 @@ require 'spec_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-describe CaseLogsController do
+describe CaseLogsController, :type => :controller  do
 
   # This should return the minimal set of attributes required to create a valid
   # CaseLog. As you add validations to CaseLog, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "patient_name" => "MyString" } }
+  let(:valid_attributes) { { "patient_name" => "someone", "title" => "some title" } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # CaseLogsController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  let(:valid_session) {}
+
+  before :each do
+    @user = FactoryGirl.build(:doctor, admin: true)
+    CaseLogsController.any_instance.stub(:current_user).and_return @user
+  end
 
   describe "GET index" do
     it "assigns all case_logs as @case_logs" do
@@ -43,6 +48,12 @@ describe CaseLogsController do
       case_log = CaseLog.create! valid_attributes
       get :show, {:id => case_log.to_param}, valid_session
       assigns(:case_log).should eq(case_log)
+    end
+
+
+    it "request an invalid case_log id" do
+      get :show, {:id => 1}, valid_session
+      response.should redirect_to(case_logs_path)
     end
   end
 
@@ -153,7 +164,7 @@ describe CaseLogsController do
     it "redirects to the case_logs list" do
       case_log = CaseLog.create! valid_attributes
       delete :destroy, {:id => case_log.to_param}, valid_session
-      response.should redirect_to(case_logs_url)
+      response.should redirect_to(case_logs_path)
     end
   end
 

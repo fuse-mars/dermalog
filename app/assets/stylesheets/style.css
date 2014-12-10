@@ -11,6 +11,54 @@ and open the template in the editor.
 .caseview{
     padding-top: 0px;
 }
+
+#index-login {
+    width:50%;
+    margin-top: 20px;
+}
+
+#signup-button {
+    width: 100px;
+}
+
+.clear-both {
+    clear: both;
+}
+
+.footer-2 {
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    padding-bottom: 0px;
+}
+
+.row-main {
+    max-height: 480px;
+    overflow-y: scroll;
+}
+
+h1 {
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+#flash_notice {
+    font-size: 14px;
+}
+
+.error_messages, #error_explanation {
+    float:right;
+    margin-top: 25px;
+    color:red;
+}
+
+.case-list th {
+    min-width: 200px;
+}
+
+#case_log_patient_gender_1, #case_log_patient_gender_2 {
+    width: 20px;
+}
 .dl-sidebar{
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
@@ -19,4 +67,14 @@ and open the template in the editor.
     position: relative;
     overflow: hidden;
     height: 360px;
+}
+
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
 }

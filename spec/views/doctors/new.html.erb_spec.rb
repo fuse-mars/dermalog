@@ -2,14 +2,14 @@ require 'spec_helper'
 
 describe "doctors/new" do
   before(:each) do
-    assign(:doctor, stub_model(Doctor,
+    assign(:doctor, Doctor.create({
       :license => "MyString",
       :name => "MyString",
       :email => "MyString",
       :password => "MyString",
       :state => "MyString",
       :admin => false
-    ).as_new_record)
+    }))
   end
 
   it "renders new doctor form" do
@@ -22,7 +22,6 @@ describe "doctors/new" do
       assert_select "input#doctor_email[name=?]", "doctor[email]"
       assert_select "input#doctor_password[name=?]", "doctor[password]"
       assert_select "input#doctor_state[name=?]", "doctor[state]"
-      assert_select "input#doctor_admin[name=?]", "doctor[admin]"
     end
   end
 end

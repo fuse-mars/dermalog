@@ -1,5 +1,8 @@
 == Dermalog
 
+{<img src="https://travis-ci.org/nshimiye/dermalog.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/nshimiye/dermalog]
+{<img src="https://coveralls.io/repos/nshimiye/dermalog/badge.png?branch=master" alt="Coverage Status" />}[https://coveralls.io/r/nshimiye/dermalog?branch=master]
+
 (1) Install Rails (e.g. http://railsinstaller.org/en)
 (2) To install all necessary libraries (gems) run the following command on the console on the project's directory:
   bundle install
@@ -17,4 +20,20 @@
   https://ase.cs.columbia.edu/stash/projects/TEAM4_14/repos/repo/browse
 
 (2) follow instructions there
+
+
+== Running tests
+(1) rake db:test:prepare
+(2) bundle exec rspec
+
+
+== push to stash
+In the project's home directory
+
+  git config --local user.name "<your full name>"
+
+  git config --local user.email "<columbia email>"
+
+  git remote set-url origin https://<username>@ase.cs.columbia.edu/stash/scm/team4_14/repo.git
+  git push origin master
 

@@ -2,7 +2,6 @@
 <html>
 <head>
   <title>Dermalog</title>
-  <link rel="shortcut icon" href="http://www.sornorbkn.com/images/file_icon.png">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -14,13 +13,13 @@
         <div class="row">
             <div class="navbar col-sm-12" role="navigation">
                 <div class="navbar-header">
-                    <img src="http://www.sornorbkn.com/images/file_icon.png" width="50" height="50" alt="" style="float:left; padding-top:20px"> 
+                    <img src="/assets/icon.png" width="50" height="50" alt="" style="float:left; padding-top:20px"> 
                     <%= link_to "Dermalog", root_path, class: "brand"%>
                 </div>
                 <div class="collapse navbar-collapse pull-right">
                     <% if current_user %>
                     <ul class="nav pull-left" style="padding-top:5px;">
-                        <li><a>Logged in as <%= current_user.name %></a></li>
+                        <li><%= link_to "Logged in as #{current_user.name}", current_user %></li>
                         <li class=<%=if params[:controller]=='case_logs' then "active" else "none" end%>>
                             <%= link_to 'My Cases', case_logs_path %></li>
                         <li class=<%=if params[:controller]=='images' then "active" else "none" end%>>
@@ -53,12 +52,17 @@
 
 
 <% if !(params[:controller] == 'sessions') %>
-        <%= yield %>
+    <section class="price-2">
+    <div class="row row-main">
+    <div class="col-sm-8 col-sm-offset-1">
+
+    <%= yield %>
+    </div>
+    </div>
+    </section>
 <% else %>
     <%= yield %>
 <% end %>
-
-
 <!-- footer-2 -->
 <footer class="footer-2 bg-midnight-blue">
     <div class="container">

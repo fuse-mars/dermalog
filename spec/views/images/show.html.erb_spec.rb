@@ -2,12 +2,13 @@ require 'spec_helper'
 
 describe "images/show" do
   before(:each) do
-    @image = assign(:image, stub_model(Image,
+    case_log = FactoryGirl.create(:case_log, id: 1)
+    @image = assign(:image, Image.create({
       :url => "Url",
       :title => "Title",
       :description => "Description",
-      :case_log_id => "Case Log"
-    ))
+      :case_log => case_log
+    }))
   end
 
   it "renders attributes in <p>" do
@@ -16,6 +17,6 @@ describe "images/show" do
     rendered.should match(/Url/)
     rendered.should match(/Title/)
     rendered.should match(/Description/)
-    rendered.should match(/Case Log/)
+    rendered.should match(@image.case_log.title)
   end
 end

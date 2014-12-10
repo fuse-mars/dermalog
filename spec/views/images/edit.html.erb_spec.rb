@@ -2,12 +2,13 @@ require 'spec_helper'
 
 describe "images/edit" do
   before(:each) do
-    @image = assign(:image, stub_model(Image,
+    case_log = FactoryGirl.create(:case_log, id: 1)
+    @image = assign(:image, Image.create({
       :url => "MyString",
       :title => "MyString",
       :description => "MyString",
-      :case_log_id => "MyString"
-    ))
+      :case_log => case_log
+    }))
   end
 
   it "renders the edit image form" do
@@ -17,8 +18,7 @@ describe "images/edit" do
     assert_select "form[action=?][method=?]", image_path(@image), "post" do
       assert_select "input#image_url[name=?]", "image[url]"
       assert_select "input#image_title[name=?]", "image[title]"
-      assert_select "input#image_description[name=?]", "image[description]"
-      assert_select "input#image_case_log_id[name=?]", "image[case_log_id]"
+      assert_select "textarea#image_description[name=?]", "image[description]"
     end
   end
 end
